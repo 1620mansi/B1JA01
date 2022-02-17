@@ -1,0 +1,43 @@
+<div class="loginPage-container">
+    <div class="login-container">
+        <h2>Welcome to Amaze Pack!</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <h4>Login Here</h4>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" class="form-control" type="email" placeholder="Enter Email" formControlName="email"
+                [class.is-invalid] = "email?.invalid && email?.touched">
+                <div *ngIf="email?.invalid && email?.touched" class="text-danger">
+                    <small *ngIf="emailcontrols?.['required']">Email is Required</small>
+                    <small *ngIf="emailcontrols?.['pattern']">Email is Invalid</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" class="form-control" type="password" placeholder="Enter Password" formControlName="password"
+                [class.is-invalid] = "password?.invalid && password?.touched">
+                <div *ngIf="password?.invalid && password?.touched" class="text-danger">
+                    <small *ngIf="passwordcontrols?.['required']">Password is Required</small>
+                    <small *ngIf="passwordcontrols?.['pattern']">
+                        Password should have atleast<br>
+                        *minimum 8 characters<br>
+                        *one capital letter, one small letter<br>
+                        *one number,one special character
+                    </small>
+                </div>
+            </div>
+
+            <div class="button-tag">
+                <button id="loginButton" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
+            </div>
+        
+        <div class="loginRouting-container">
+            <p class="login-nav"> New User ? 
+            <a id="signupLink" routerLink="/signup">Sign Up</a></p>
+        </div>
+        </form>
+    </div>
+
+    
+</div>
